@@ -2,7 +2,8 @@ import mongoose from "mongoose";
 
 //Database connection function
 export const connectDB = async () => {
-    await mongoose.connect(process.env.MONGO_URL, {
+    const MONGO_URL= process.env.MONGO_URL || 'mongodb+srv://ashfaq:FKI86Yr4RS6KckCe@cluster0.kfadu.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+    await mongoose.connect(MONGO_URL, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
     }).then(() => {

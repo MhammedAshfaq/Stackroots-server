@@ -11,6 +11,7 @@ export const signIn = async (req, res) => {
     try {
         //checking user Existed
         let user = await User.findOne({ email }).select('+password')
+        console.log(user)
         if (!user) {
             return res.status(404).json({ success: false, error: 'Invalid Credentials' })
         }
@@ -54,6 +55,9 @@ export const privet = async (req, res) => {
     if (!req.user) {
         return res.status(401).json({ success: false, error: 'Inavalid credentials' })
     }
+const allUser = await User.find();
+console.log(allUser)
+
     res.status(200).json({
         success: true,
         user: {
